@@ -1,2 +1,5 @@
 .meteor/local
 .meteor/meteorite
+/nbproject/
+/private/
+/public/
