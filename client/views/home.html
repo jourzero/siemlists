@@ -1,0 +1,14 @@
+<template name="home">
+    <p>{{> loginButtons}}</p>
+    {{#if currentUser}}
+        <div class="container">
+            {{> listsTmpl}}
+        </div>
+        <button id="btnTestFilter" class="button black" title="Test Parsing Rule" onclick="alert('Not implemented yet!')">Test Parsing</button>
+    <!--
+        <button id="btnUpdate"    class="button black" title="Üpdate code from GIT">Update</button>
+    -->
+        <button id="btnCsvReport" class="button black" title="Download the current list as CSV." onclick="alert('Not implemented yet!')">Download</button>
+        <button id="btnCsvExport" class="button black" title="Export all list data as CSV and download." onclick="window.open('/lists.csv', 'DownloadWin')">Export All</button>
+    {{/if}}
+</template>

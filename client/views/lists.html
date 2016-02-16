@@ -1,0 +1,69 @@
+<template name="listsTmpl">
+    <!-- LIST SUMMARY -->
+    <details id="listDetails" open="open">
+        <summary id="listSummary">List Summary</summary>
+        <table class="dataTab">
+            <tr class="iTR"><th class="colHeaders">List Name</th>
+                <td class="colVals">
+                    <input list="lists" id="ListName" class="listIn" placeholder="DetectionType EntType ListType"
+                           title="DetectionType={MalwareC2,RogueAP,AcctActivity...}; EntType:={Domain,FQDN,IP,CIDR,MAC,Cred...}; ListType:={WL,BL};" />
+                    <datalist id="lists">
+                        {{#each lists}}
+                            {{> listTmpl}}
+                        {{/each}}  
+                    </datalist></td></tr>
+
+            <tr class="iTR">
+                <th class="colHeaders">Purpose</th>
+                <td class="colVals"><input id="ListPurpose" class="inVal" type="text" placeholder="Purpose for this list" /></td></tr>
+                    
+            <tr class="iTR"><th class="colHeaders">Source Type</th><td class="colVals">
+                    <select id="SrcTypeSel" title="Source Type" class="scopeSelector">
+                        <option disabled selected value="">Select Source Type</option>
+                        <option class="scopeOpt" title="Online"  value="online"    >Online (get list from Source URI)</option>
+                        <option class="scopeOpt" title="Manual"  value="manual"    >Manual (custom list from sec. analysts)</option>
+                    </select></td></tr></table>
+    </details>
+
+    <details id="listAttrDetails" open="open">
+        <summary id="listAttrSummary">List Attributes</summary>
+        <table class="dataTab">
+            <tr class="iTR" id="UriRow">
+                <th class="colHeaders">Source URI</th> 
+                <td class="colVals"><a href="#" id="UriLink" target="TRWin">&gt;</a> <input id="Uri" class="inValShort" type="text" placeholder="URI for online list (if applicable)" /></td></tr> 
+
+            <tr class="iTR" id="ParsingRuleRow">
+                <th class="colHeaders">Parsing Rule</th> 
+                <td class="colVals"><input id="ParsingRule" class="inValShort" type="text" placeholder="Rule for parsing input from remote source." /></td></tr> 
+
+            <tr class="iTR"><th class="colHeaders">List Type</th><td class="colVals">
+                    <select id="ListTypeSel" title="List Type" class="scopeSelector">
+                        <option disabled selected value="">Select List Type</option>
+                        <option class="scopeOpt" title="Black List"  value="BL"    >Black List</option>
+                        <option class="scopeOpt" title="White List"  value="WL"    >White List</option>
+                    </select></td></tr>            
+                        
+            <tr class="iTR"><th class="colHeaders">Entity Type</th><td class="colVals">
+                    <select id="EntTypeSel" title="Entity Type" class="scopeSelector">
+                        <option disabled selected value="">Select Entity Type</option>
+                        <option class="scopeOpt" title="Domain"  value="domain"    >Domain Name</option>
+                        <option class="scopeOpt" title="FQDN"    value="fqdn"      >Host Name (FQDN)</option>
+                        <option class="scopeOpt" title="IP"      value="ip"        >IP Address</option>
+                        <option class="scopeOpt" title="MAC"     value="mac"       >MAC Address</option>
+                        <option class="scopeOpt" title="Account" value="account"   >Account Name</option>
+                    </select></td></tr></table>
+    </details>
+
+    <details id="entityListDetails" open="open">
+        <summary id="entityListSummary">Entity List</summary>
+        <table class="dataTab">
+            <tr class="iTR"><td class="colVals">
+                <textarea id="EntityList" class="testKbTA" rows="40" placeholder="List of entities (one per line)"></textarea></td></tr></table>
+    </details>
+</template>
+        
+        
+<template name="listTmpl">
+    <option value="{{name}}"></option>
+</template>
+
