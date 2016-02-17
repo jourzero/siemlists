@@ -89,7 +89,7 @@ option {
     visibility: visible;
 }
 
-.tselTD{    
+.myTD{    
     width: 55px;
 }
 
@@ -116,6 +116,10 @@ textarea {
 
 .dataTab {
     width: 100%;
+}
+
+.goright {
+    text-align: right;
 }
 
 .colHeaders {

@@ -1,0 +1,25 @@
+
+<template name="admin">
+<h2>Admin</h2>
+{{>manageUsers}}
+</template>
+
+<template name="manageUsers">
+    <div class="container">
+      <h3>Current Users</h3>
+        {{> userList}}
+    </div>
+</template>
+
+<template name="userList">
+  <table>
+    <tr><th>User</th><th>ID</th></tr>
+    {{#each users}}
+        <tr>
+        <!-- <td class="myTD" width="20px"><button class="delete" title="Delete this user" id="btnDelUser" value="{{id}}">&times;</button></td> -->
+        <td class="myTD">{{username}}</td>
+        <!-- <td class="myTD">{{email}}</td> -->
+        <td class="myTD">{{id}}</td></tr>
+    {{/each}}
+  </table>
+</template>

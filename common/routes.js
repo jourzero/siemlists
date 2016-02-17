@@ -7,6 +7,9 @@ Router.route('/', {template: 'home'});
 // Route /about to about.html
 Router.route('/about');
 
+// Route /admin to admin.html
+Router.route('/admin');
+
 // Test Node.js HTTP request/response processing
 Router.route('/test/print/:val', httpTest, {where: 'server'});
 

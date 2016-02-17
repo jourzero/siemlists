@@ -4,11 +4,20 @@
         <div class="container">
             {{> listsTmpl}}
         </div>
-        <button id="btnTestFilter" class="button black" title="Test Parsing Rule" onclick="alert('Not implemented yet!')">Test Parsing</button>
-    <!--
-        <button id="btnUpdate"    class="button black" title="Üpdate code from GIT">Update</button>
-    -->
-        <button id="btnCsvReport" class="button black" title="Download the current list as CSV." onclick="alert('Not implemented yet!')">Download</button>
-        <button id="btnCsvExport" class="button black" title="Export all list data as CSV and download." onclick="window.open('/lists.csv', 'DownloadWin')">Export All</button>
+        <button id="btnGetList" title="Download list and test Parsing Rule" disabled>Get Online List</button>
+        <button id="btnCsvExport"  title="Export all list data as CSV and download." onclick="window.open('/lists.csv', 'DownloadWin')">Export All</button>
+        <!--
+        <button id="btnCsvReport"  title="Download the current list as CSV." onclick="alert('Not implemented yet!')">Download</button>
+        <button id="btnUpdate"    title="Üpdate code from GIT">Update</button>
+        -->
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <small>{{userText}}</small>
+        {{>adminTmpl}}
     {{/if}}
+</template>
+
+
+<template name="adminTmpl">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{{adminLink}}}
 </template>

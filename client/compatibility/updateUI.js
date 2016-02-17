@@ -28,35 +28,40 @@ function updateUIFromListName() {
     $("#SrcTypeSel").val(l.srcType);
     if (l.uri !== undefined){
         $("#Uri").val(l.uri);
-        //var linkHtml = "<a href='" + l.uri.trim() + "' target='testUri'>" + l.uri.trim() + "</a> ";
         $("#UriLink").attr('href', l.uri.trim());    
     }
+    $("#ParsingRule").val(l.parsingRule);
     $("#ListTypeSel").val(l.listType);
     $("#EntTypeSel").val(l.entityType);
-    //$("#EntityID").val(l.entityID);
     $("#EntityList").val(l.entityList);
     
+    // Hide some fields if it's a custom/manual list
     if (l.srcType == "manual"){
        $("#UriRow").attr("hidden", "true");
        $("#ParsingRuleRow").attr("hidden", "true");
+       $("#btnGetList").attr("Disabled", "");
     }
     else{
        $("#UriRow").attr("hidden", null);        
        $("#ParsingRuleRow").attr("hidden", null);        
+       $("#btnGetList").removeAttr("Disabled");
     }
 }    
    
 // Tweak UI for consistency
 function tweakUI() {
     console.log("Tweaking UI");
+    
     $("#UriLink").attr('href', $("#Uri").val());
     if ($("#SrcTypeSel").val() == "manual"){
        $("#UriRow").attr("hidden", "true");
        $("#ParsingRuleRow").attr("hidden", "true");
+       $("#btnGetList").attr("Disabled", "");
     }
     else{
        $("#UriRow").attr("hidden", null);        
        $("#ParsingRuleRow").attr("hidden", null);        
+       $("#btnGetList").removeAttr("Disabled");
     }
 }
 

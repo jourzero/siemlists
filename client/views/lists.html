@@ -11,7 +11,9 @@
                         {{#each lists}}
                             {{> listTmpl}}
                         {{/each}}  
-                    </datalist></td></tr>
+                    </datalist></td>
+                    {{{delButton}}}
+            </tr>
 
             <tr class="iTR">
                 <th class="colHeaders">Purpose</th>
@@ -58,7 +60,7 @@
         <summary id="entityListSummary">Entity List</summary>
         <table class="dataTab">
             <tr class="iTR"><td class="colVals">
-                <textarea id="EntityList" class="testKbTA" rows="40" placeholder="List of entities (one per line)"></textarea></td></tr></table>
+                <textarea id="EntityList" class="testKbTA" rows="30" placeholder="List of entities (one per line)"></textarea></td></tr></table>
     </details>
 </template>
         
@@ -66,4 +68,3 @@
 <template name="listTmpl">
     <option value="{{name}}"></option>
 </template>
-
