@@ -39,8 +39,11 @@
         
         // Only remove duplicates
         reduced = arr.filter(function(el,i,a){if(i==a.indexOf(el))return 1;return 0})
+        var reducedCount = reduced.length;
 
         list = reduced.join("\n").trim();
+        console.log("Original entries obtained: ", count);
+        console.log("Reduced set of entries   : ", reducedCount);
         return list.trim();
        },
     })

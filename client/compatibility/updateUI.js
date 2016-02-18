@@ -50,8 +50,7 @@ function updateUIFromListName() {
    
 // Tweak UI for consistency
 function tweakUI() {
-    console.log("Tweaking UI");
-    
+    console.log("Tweaking UI");    
     $("#UriLink").attr('href', $("#Uri").val());
     if ($("#SrcTypeSel").val() == "manual"){
        $("#UriRow").attr("hidden", "true");

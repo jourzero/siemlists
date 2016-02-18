@@ -1,7 +1,22 @@
 <template name="layout">
-{{> yield}}
-<hr />
-<p>Copyright &copy; JourZero 2016.
-    
-</p>
+    {{> loginButtons}}
+    {{#if currentUser}}
+        {{> spacing}}<a href="/">Home</a>
+        {{> spacing}}<a href="/about">About</a>
+        {{> spacing}}{{>adminTmpl}}
+        <!--
+        {{> spacing}}<small>{{userText}}</small>
+        -->
+        {{> yield}}
+    {{/if}}
+    <hr />
+    <p>Copyright &copy; JourZero 2016. </p>
+</template>
+
+<template name="spacing">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</template>
+
+<template name="adminTmpl">
+    {{{adminLink}}}
 </template>

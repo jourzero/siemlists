@@ -14,7 +14,7 @@ Router.route('/admin');
 Router.route('/test/print/:val', httpTest, {where: 'server'});
 
 // Test route for executing server-side javascript code
-//Router.route('/test/hello', serverHello, {where: 'server'});
+Router.route('/test/hello', serverHello, {where: 'server'});
 
 // Route for CSV export of all list data
 Router.route('lists.csv', exportToCSV, {where: 'server'});
@@ -155,7 +155,6 @@ function httpTest() {
 }
 
 
-/* Remove so that we don't have a dependency on npm-container/meteorhacks:npm (causing startup issues on waptr1)
 // Run a simple test for node.js API (using os module)
 function serverHello(){
   os = Npm.require('os');
@@ -163,4 +162,3 @@ function serverHello(){
   var res = this.response;
   res.end('Hello from '+os.hostname());
 }
-*/

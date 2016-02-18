@@ -1,7 +1,8 @@
 Template.adminTmpl.helpers({
     adminLink: function () {
-        username = Meteor.user().username;
-        if (username === 'admin'){
+        var username = Meteor.user().username;
+        var role = getRole(username);
+        if (role === 'DevOps'){
             return "<a href='/admin' target='adminWin'>Admin</a>";
         }
     },
@@ -25,5 +26,8 @@ Template.userList.helpers({
         if (this._id !== undefined)
           return this._id;
         return "";
-  }
+  },
+  role: function () {
+      return getRole(this.username);
+  },
 })

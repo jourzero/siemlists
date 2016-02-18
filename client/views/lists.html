@@ -22,8 +22,8 @@
             <tr class="iTR"><th class="colHeaders">Source Type</th><td class="colVals">
                     <select id="SrcTypeSel" title="Source Type" class="scopeSelector">
                         <option disabled selected value="">Select Source Type</option>
-                        <option class="scopeOpt" title="Online"  value="online"    >Online (get list from Source URI)</option>
-                        <option class="scopeOpt" title="Manual"  value="manual"    >Manual (custom list from sec. analysts)</option>
+                        <option class="scopeOpt" title="Online"  value="online"    >Online (list from Source URI)</option>
+                        <option class="scopeOpt" title="Manual"  value="manual"    >Manual (custom list)</option>
                     </select></td></tr></table>
     </details>
 
@@ -37,13 +37,14 @@
             <tr class="iTR" id="ParsingRuleRow">
                 <th class="colHeaders">Parsing Rule</th>  
                 <td class="colVals"><input id="ParsingRule" class="inValShort" type="text" placeholder="Rule for parsing input from remote source." title="Used by Javascript Regex: 'var re = RegExp(ParsingRule);'. Click Help if needed."/>
-                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="refwin">Help</a></td></tr> 
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="refwin">Regex Help</a></td></tr> 
 
             <tr class="iTR"><th class="colHeaders">List Type</th><td class="colVals">
                     <select id="ListTypeSel" title="List Type" class="scopeSelector">
                         <option disabled selected value="">Select List Type</option>
                         <option class="scopeOpt" title="Black List"  value="BL"    >Black List</option>
                         <option class="scopeOpt" title="White List"  value="WL"    >White List</option>
+                        <option class="scopeOpt" title="SIEM Config"  value="CONF">SIEM Config</option>
                     </select></td></tr>            
                         
             <tr class="iTR"><th class="colHeaders">Entity Type</th><td class="colVals">
@@ -54,6 +55,8 @@
                         <option class="scopeOpt" title="IP"      value="ip"        >IP Address</option>
                         <option class="scopeOpt" title="MAC"     value="mac"       >MAC Address</option>
                         <option class="scopeOpt" title="Account" value="account"   >Account Name</option>
+                        <option class="scopeOpt" title="Catchall Config: GROUP_NAME,SHORT_NAME,HOST_ALIAS1,HOST_ALIAS2..." value="aliases">Catchall Config (CSV)</option>
+                        <option class="scopeOpt" title="Custom Config: DOMAIN,CONFIG_TYPE,SOURCE_HOST,FILE_PATH" value="aliases">Event Forwarding Config (CSV)</option>
                     </select></td></tr></table>
     </details>
 
@@ -63,9 +66,18 @@
             <tr class="iTR"><td class="colVals">
                 <textarea id="EntityList" class="testKbTA" rows="30" placeholder="List of entities (one per line)"></textarea></td></tr></table>
     </details>
+    
+    <button id="btnGetList" title="Download list and test Parsing Rule" disabled>Get Online List</button>
+    <button id="btnCsvValidate"  title="Validate this list prior to deployment." onclick="alert('Not implemented yet!')">Validate</button>
+    <button id="btnCsvDeploy"  title="Deployment this list to SIEM." onclick="alert('Not implemented yet!')">Deploy</button>
+    <button id="btnCsvExport"  title="Export all list data as CSV and download." onclick="window.open('/lists.csv', 'DownloadWin')">Export All</button>
+    <!--
+    <button id="btnCsvReport"  title="Download the current list as CSV." onclick="alert('Not implemented yet!')">Download</button>
+    <button id="btnUpdate"    title="Üpdate code from GIT">Update</button>
+    -->
 </template>
-        
         
 <template name="listTmpl">
     <option value="{{name}}"></option>
 </template>
+

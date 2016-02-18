@@ -1,7 +1,10 @@
-
 <template name="admin">
-<h2>Admin</h2>
-{{>manageUsers}}
+<div class="container">
+    <details id="usersDetails" open="open">
+        <summary id="usersSummary">Users</summary>
+            {{>manageUsers}}
+    </details>
+</div>
 </template>
 
 <template name="manageUsers">
@@ -12,14 +15,16 @@
 </template>
 
 <template name="userList">
-  <table>
-    <tr><th>User</th><th>ID</th></tr>
-    {{#each users}}
-        <tr>
-        <!-- <td class="myTD" width="20px"><button class="delete" title="Delete this user" id="btnDelUser" value="{{id}}">&times;</button></td> -->
-        <td class="myTD">{{username}}</td>
-        <!-- <td class="myTD">{{email}}</td> -->
-        <td class="myTD">{{id}}</td></tr>
-    {{/each}}
-  </table>
+    <table class="dataTab">
+      <tr><th class="tinyTD"></th><th class="myTD">User</th><!-- <th class="myTD">ID</th> --> <th class="myTD">Role</th></tr>
+        {{#each users}}
+            <tr class="iTR">
+                <td class="tinyTD"><button class="delete" title="Delete this user" id="btnDelUser" value="{{id}}">&times;</button></td>
+                <td class="myTD">{{username}}</td>
+                <!-- <td class="myTD">{{email}}</td> -->
+                <!-- <td class="myTD">{{id}}</td> -->
+                <td class="myTD">{{role}}</td>
+            </tr>
+        {{/each}}
+    </table>
 </template>

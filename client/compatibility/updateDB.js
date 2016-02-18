@@ -1,6 +1,7 @@
 
 // Save the list data
 function saveListDataFromUI() {
+    
     var listName = Session.get("listName");
     if ((listName === undefined) || (listName === "")){
         console.log("Empty List Name");
@@ -36,6 +37,7 @@ function saveListDataFromUI() {
 
 // Rename the list
 function renameListFromUI(prevListName, newListName) {
+    
     if ((prevListName === undefined) || (prevListName === "")){
         console.log("Skipping rename, previous name is empty");
         return;

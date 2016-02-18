@@ -1,4 +1,43 @@
-
 <template name="about">
-<h2>About</h2>
+<div class="container">
+    <details id="introDetails" open="open">
+        <summary id="introSummary">Introduction</summary>
+            <p>This application provides a code base to act as a custom user interface for a SIEM. 
+               It is meant as a configuration utility for the components that don't already 
+               have a front-end - i.e. for custom code or advanced features that are not configurable via an existing UI.</p>
+    </details>
+
+    <details id="archDetails" open="open">
+        <summary id="archSummary">Architecture</summary>
+            <p>The high-level architecture is shown below. </p>
+
+            <img src="/arch.jpg" alt="Architecture Diagram">
+
+            <p>The key components are the following:
+            <ul>
+                <li><a href="https://www.meteor.com/" target="refwin">Meteor</a> is the framework used as a base for this app. It comes prepackaged with a whole bunch of javascript packages, MongoDB and Node.js</li>
+              <li><a href="https://www.mongodb.com/" target="refwin">Mongo</a> is used as a data store with components on the server (MongoDB) and on the client (Mini Mongo).</li>
+              <li><a href="https://www.nodejs.org/" target="refwin">Node.js</a> is used as an web app server that allows server-side javascript code to be executed (from server/ or common/).</li>
+              <li>Meteor also allows the use of Node packages managed via <a href="https://www.npmjs.com/" target="refwin">NPM</a>.</li>
+              <li>The deploy.js server-side javascript handles the configuration updates to the SIEM.</li>
+              <li>The getList.js server-side javascript handles the download of blacklists from online sources and the data parsing to extract the exact data needed by the SIEM.</li>
+              <li>The validate.js javascript handles the validation of the data before storing it into MongoDB. It is also used before the deployment.</li>
+            </ul>
+            </p>      
+    </details>
+
+    <details id="roleDetails" open="open">        
+        <summary id="roleSummary">User Roles</summary>
+        <p>Your user name is <em>{{username}}</em> and you are part of the <em>{{role}}</em> role.</p>
+        <br/>
+        <p>Roles are defined as follows.</p>
+
+        <table class="dataTab">
+            <tr class="iTR"><th>Role</th><th>Purpose</th></tr>
+            <tr class="iTR"><td class="myTD">Admin</td><td>User & Data Admin</td></tr>
+            <tr class="iTR"><td class="myTD">Security Analyst</td><td>Manage Whitelists &amp; Blacklists</td></tr>
+            <tr class="iTR"><td class="myTD">Solution Architect</td><td>Manage SIEM Config (internal host lists)</td></tr>
+        </table>
+    </details>
+</div>
 </template>

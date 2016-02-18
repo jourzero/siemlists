@@ -1,6 +1,6 @@
+Template.layout.helpers({
 
-Template.home.helpers({
-    userText: function () {
+        userText: function () {
         if (Meteor.user().username !== undefined) 
             return "Logged-in as " + Meteor.user().username;
 
@@ -8,6 +8,5 @@ Template.home.helpers({
             return "Logged-in as " + Meteor.user().emails[0].address;
         
         return "(unknown user)";
-    },
+    },    
 });
-
