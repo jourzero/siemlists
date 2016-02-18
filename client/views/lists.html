@@ -35,8 +35,9 @@
                 <td class="colVals"><a href="#" id="UriLink" target="TRWin">&gt;</a> <input id="Uri" class="inValShort" type="text" placeholder="URI for online list (if applicable)" /></td></tr> 
 
             <tr class="iTR" id="ParsingRuleRow">
-                <th class="colHeaders">Parsing Rule</th> 
-                <td class="colVals"><input id="ParsingRule" class="inValShort" type="text" placeholder="Rule for parsing input from remote source." /></td></tr> 
+                <th class="colHeaders">Parsing Rule</th>  
+                <td class="colVals"><input id="ParsingRule" class="inValShort" type="text" placeholder="Rule for parsing input from remote source." title="Used by Javascript Regex: 'var re = RegExp(ParsingRule);'. Click Help if needed."/>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="refwin">Help</a></td></tr> 
 
             <tr class="iTR"><th class="colHeaders">List Type</th><td class="colVals">
                     <select id="ListTypeSel" title="List Type" class="scopeSelector">

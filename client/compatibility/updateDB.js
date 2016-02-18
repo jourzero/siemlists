@@ -45,20 +45,28 @@ function renameListFromUI(prevListName, newListName) {
         return;
     }        
     
-    var lst = {}, idx = {}, mod={};
-    idx.name       = prevListName;
-    lst.name       = newListName;
-    mod["$set"] = lst;
-    i = listsColl.findOne(idx);
+    var vals = {}, critPrev = {}, critNew = {}; mod={};
+    critPrev.name  = prevListName;
+    critNew.name   = newListName;
+    vals.name      = newListName;
+    mod["$set"] = vals;
+    rec1 = listsColl.findOne(critPrev);
+    rec2 = listsColl.findOne(critNew);
 
-    // If the issue doesn't exist, insert a new record. If not, use upsert.
-    if ((i === undefined) || (i._id <= 0)){
+    // Skip if the list record to be renamed doesn't exist
+    if ((rec1 === undefined) || (rec1._id <= 0)){
         console.log("Previous list not found: " + prevListName);
         return;
     }
-    else{
-        console.log("Renaming list from " + prevListName + " to " + newListName);
-        updId = listsColl.update(i._id, mod);
-        Session.set("listName", newListName);
+    
+    // Skip if there's already a record with the new name
+    if (rec2 !== undefined){
+        console.log("ERROR: The list " + prevListName + " cannot be renamed because " + newListName + " already exists.");
+        return;
     }
+    
+    // Rename the list
+    console.log("Renaming list from " + prevListName + " to " + newListName);
+    updId = listsColl.update(rec1._id, mod);
+    Session.set("listName", newListName);
 }

@@ -31,16 +31,21 @@ Template.home.events({
     'click #btnGetList': function(){
         var uri = $("#Uri").val();
         var parsingRule = $("#ParsingRule").val();
-        console.log("Getting entity list from URI " + uri);
-        Meteor.call('getList', uri, parsingRule, function (error, result) {
-        if (error) {
-          console.log("ERROR: ", error);
-        };
-        //Session.set("entityList", result);
+        console.log("Getting entity list from URI " + uri + ". Please be patient...");
+        //alert("Getting entity list from URI " + uri + ". Please wait for the separate 'Done' popup.");
+        /* Async doesn't work (not sure why)
+        var result = Meteor.call('getList', uri, parsingRule);
         $("#EntityList").val(result);
         saveListDataFromUI();
-  });
+        */
+        Meteor.call('getList', uri, parsingRule, function (error, result) {
+            //alert("Done. See console log if needed.");
+            if (error)
+              console.log("ERROR: ", error);
 
+            $("#EntityList").val(result);
+            saveListDataFromUI();
+        });
     }
 });
 
