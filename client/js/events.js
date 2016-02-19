@@ -33,11 +33,6 @@ Template.home.events({
     },
     'click #btnGetList': function(){
         if (isUnknownUser()) return;
-        // Exit right away if the user isn't assigned a role.
-        if (role === 'UNASSIGNED!') {
-            console.log("User was not assigned role to access this app."); 
-            return;
-        }
         
         var uri = $("#Uri").val();
         var parsingRule = $("#ParsingRule").val();

@@ -5,8 +5,8 @@
         <table class="dataTab">
             <tr class="iTR"><th class="colHeaders">List Name</th>
                 <td class="colVals">
-                    <input list="lists" id="ListName" class="listIn" placeholder="DetectionType EntType ListType"
-                           title="DetectionType={MalwareC2,RogueAP,AcctActivity...}; EntType:={Domain,FQDN,IP,CIDR,MAC,Cred...}; ListType:={WL,BL};" />
+                    <input list="lists" id="ListName" class="listIn" placeholder="LogicalName EntType ListType"
+                           title="LogicalName:={MalwareC2,RogueAP,AcctActivity...}; EntType:={Domain,FQDN,IP,CIDR,MAC,Cred...}; ListType:={WL,BL};" />
                     <datalist id="lists">
                         {{#each lists}}
                             {{> listTmpl}}
@@ -42,9 +42,12 @@
             <tr class="iTR"><th class="colHeaders">List Type</th><td class="colVals">
                     <select id="ListTypeSel" title="List Type" class="scopeSelector">
                         <option disabled selected value="">Select List Type</option>
-                        <option class="scopeOpt" title="Black List"  value="BL"    >Black List</option>
-                        <option class="scopeOpt" title="White List"  value="WL"    >White List</option>
-                        <option class="scopeOpt" title="SIEM Config"  value="CONF">SIEM Config</option>
+                        <option class="scopeOpt" title="Malware Black List"  value="BL"    >Malware Black List</option>
+                        <option class="scopeOpt" title="Malware White List"  value="WL"    >Malware White List</option>
+                        <option class="scopeOpt" title="Device Black List"  value="DBL"    >Device Black List</option>
+                        <option class="scopeOpt" title="Device White List"  value="DWL"    >Device White List</option>
+                        <option class="scopeOpt" title="Device Manufacturer"  value="DM"   >Device Manufacturer</option>
+                         <option class="scopeOpt" title="SIEM Config"  value="CONF">SIEM Config</option>
                     </select></td></tr>            
                         
             <tr class="iTR"><th class="colHeaders">Entity Type</th><td class="colVals">
@@ -64,13 +67,12 @@
         <summary id="entityListSummary">Entity List</summary>
         <table class="dataTab">
             <tr class="iTR"><td class="colVals">
-                <textarea id="EntityList" class="testKbTA" rows="25" placeholder="List of entities (one per line)"></textarea></td></tr></table>
+                <textarea id="EntityList" class="testKbTA" rows="20" placeholder="List of entities (one per line)"></textarea></td></tr></table>
     </details>
     
-    <button id="btnGetList" title="Download list and test Parsing Rule" disabled>Get Online List</button>
-    <button id="btnCsvValidate"  title="Validate this list prior to deployment." onclick="alert('Not implemented yet!')">Validate</button>
-    <button id="btnCsvDeploy"  title="Deployment this list to SIEM." onclick="alert('Not implemented yet!')">Deploy</button>
-    <button id="btnCsvExport"  title="Export all list data as CSV and download." onclick="window.open('/lists.csv', 'DownloadWin')">Export All</button>
+    <button id="btnGetList" title="Download list and test Parsing Rule" disabled>Update List</button>
+    <button id="btnCsvValidate"  title="Validate this list prior to deployment." onclick="validateCall()">Validate</button>
+    {{> adminButtonsTmpl}}
     <!--
     <button id="btnCsvReport"  title="Download the current list as CSV." onclick="alert('Not implemented yet!')">Download</button>
     <button id="btnUpdate"    title="Üpdate code from GIT">Update</button>
@@ -81,3 +83,6 @@
     <option value="{{name}}"></option>
 </template>
 
+<template name="adminButtonsTmpl">
+    {{{adminButtons}}}
+</template>
