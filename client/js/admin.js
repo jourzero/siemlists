@@ -10,7 +10,7 @@ Template.adminTmpl.helpers({
 
 Template.userList.helpers({
   users: function () {
-    return Meteor.users.find();
+    return Meteor.users.find({},{sort: {username: 1}});
   },
   username: function () {
         if (this.username !== undefined)

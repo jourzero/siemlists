@@ -9,6 +9,8 @@ function getRole(user){
         return ROLE_DEVOPS;
     if (user === 'admin')
         return ROLE_DEVOPS;
+    if (user === 'bob')
+        return ROLE_SOLARCH;
     if (user === 'john')
         return ROLE_SOLARCH;
     if (user === 'joe')

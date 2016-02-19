@@ -55,8 +55,8 @@
                         <option class="scopeOpt" title="IP"      value="ip"        >IP Address</option>
                         <option class="scopeOpt" title="MAC"     value="mac"       >MAC Address</option>
                         <option class="scopeOpt" title="Account" value="account"   >Account Name</option>
-                        <option class="scopeOpt" title="Catchall Config: GROUP_NAME,SHORT_NAME,HOST_ALIAS1,HOST_ALIAS2..." value="aliases">Catchall Config (CSV)</option>
-                        <option class="scopeOpt" title="Custom Config: DOMAIN,CONFIG_TYPE,SOURCE_HOST,FILE_PATH" value="aliases">Event Forwarding Config (CSV)</option>
+                        <option class="scopeOpt" title="Catchall Config: GROUP_NAME,SHORT_NAME,HOST_ALIAS1,HOST_ALIAS2..." value="catchall">Catchall Config (CSV)</option>
+                        <option class="scopeOpt" title="Event Forwarding Config: DOMAIN,CONFIG_TYPE,SOURCE_HOST,FILE_PATH" value="eventfwd">Event Forwarding Config (CSV)</option>
                     </select></td></tr></table>
     </details>
 
@@ -64,7 +64,7 @@
         <summary id="entityListSummary">Entity List</summary>
         <table class="dataTab">
             <tr class="iTR"><td class="colVals">
-                <textarea id="EntityList" class="testKbTA" rows="30" placeholder="List of entities (one per line)"></textarea></td></tr></table>
+                <textarea id="EntityList" class="testKbTA" rows="25" placeholder="List of entities (one per line)"></textarea></td></tr></table>
     </details>
     
     <button id="btnGetList" title="Download list and test Parsing Rule" disabled>Get Online List</button>
