@@ -11,7 +11,7 @@
                 
         options.npmRequestOptions = reqOpt;
         
-        console.log("Sending HTTP Get Request to", uri, "...");
+        console.log("Sending HTTP GET to", uri, "...");
         var result = Meteor.http.get(uri, options);
         console.log("Done.");
         //$ = cheerio.load(result.content);

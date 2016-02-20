@@ -1,4 +1,4 @@
-Meteor.startup(function () {
+//Meteor.startup(function () {
 
   // Use Validator (https://www.npmjs.com/package/validator)
   var validator = Meteor.npmRequire('validator');
@@ -31,10 +31,10 @@ Meteor.startup(function () {
 
         // Adjust processing based on Entity Type
         switch(entType){
-            case 'ip':       typeA = "IP Address";   valFunc = validator.isIP  ;        break;
-            case 'fqdn':     typeA = "Host Name";    valFunc = validator.isFQDN;        break;
-            case 'domain':   typeA = "Domain Name "; valFunc = validator.isFQDN;        break;
-            case 'mac':      typeA = "MAC Address";  valFunc = validator.isMACAddress ; break;
+            case 'ip':       typeA = "IPAddress";    valFunc = validator.isIP  ;        break;
+            case 'fqdn':     typeA = "HostName";     valFunc = validator.isFQDN;        break;
+            case 'domain':   typeA = "DomainName ";  valFunc = validator.isFQDN;        break;
+            case 'mac':      typeA = "MACAddress";   valFunc = validator.isMACAddress ; break;
             case 'account':  typeA = "Credentials";  valFunc = validator.isAscii;       break;
             case 'catchall': typeA = null;           valFunc = validator.isAscii;       break;
             case 'eventfwd': typeA = null;           valFunc = validator.isAscii;       break;
@@ -44,11 +44,11 @@ Meteor.startup(function () {
         
         // Adjust processing based on List Type
         switch(listType){
-            case 'BL':      typeB = "Black List";           break;
-            case 'WL':      typeB = "White List";           break;
-            case 'DBL':     typeB = "Device Black List";    break;
-            case 'DWL':     typeB = "Device White List";    break;
-            case 'DM':      typeB = "Device Manufacturer";  break;
+            case 'BL':      typeB = "BlackList";           break;
+            case 'WL':      typeB = "WhiteList";           break;
+            case 'DBL':     typeB = "DeviceBlackList";     break;
+            case 'DWL':     typeB = "DeviceWhiteList";     break;
+            case 'DM':      typeB = "DeviceManufacturer";  break;
             case 'CONF':    typeB = null;                   break;
             case 'TEXT':    typeB = null;                   break;
             case 'HBRD':    typeB = null;                   break;
@@ -65,7 +65,7 @@ Meteor.startup(function () {
                 try{
                     data = JSON.parse(listData);
                 }catch(e){
-                    return "FAIL! 2nd level JSON data validation did not pass. \nException: " + e.toString();
+                    return "FAIL! 2nd level JSON data validation did not pass. Exception: " + e.toString();
                 }   
                 
                 // If the list type is HBase Ref Data, it's Base-64 encoded. Try decoding it.
@@ -77,11 +77,13 @@ Meteor.startup(function () {
                         for (var j=0; j<data.Row[i].Cell.length; j++){
                             var col = new Buffer(data.Row[i].Cell[j].column, 'base64').toString("ascii");
                             var val = new Buffer(data.Row[i].Cell[j]['$'], 'base64').toString("ascii");
-                            console.log("Row[",i,"].key =", key, ":", col, "=", val);                            
-                            base64decoded += "Row[" + i + "].key=" + key + ": " + col + "=" + val + "\n";
+                            var ts  = data.Row[i].Cell[j].timestamp;
+                            decoded = "Row[" + i + "].key=" + key + ": column=" + col + "; $=" + val + "; timestamp=" + ts + "\n";
+                            console.log(decoded); 
+                            base64decoded += decoded;
                         }
                     }
-                    return "PASS. JSON-Base64 validation OK. \n" + base64decoded;
+                    return "PASS. JSON-Base64 validation OK.\n" + base64decoded;
                 }
                 else{
                     return "PASS. Both levels of JSON validation passed.";
@@ -120,7 +122,7 @@ Meteor.startup(function () {
                     var manuf = vals2[2];
                     if (manuf === undefined){
                         failNums += String(i+1) + " ";
-                        failList += list[i] + " ";
+                        failList += "[" + String(i+1) + "] " + list[i] + "\n";
                     }
                 }
                 
@@ -128,18 +130,20 @@ Meteor.startup(function () {
                 else{
                     if (!valFunc(list[i])){
                         failNums += String(i+1) + " ";
-                        failList += list[i] + " ";
+                        failList += "[" + String(i+1) + "] " + list[i] + "\n";
                     }
                 }
             }
             if (failList === "")
                 return "PASS. Checked all " + String(list.length) + " entries.";
-            else
-                return "FAIL! Please review line number(s): " + failNums;
+            else{
+                var msg = "FAIL! Please review line number(s): " + failNums;
+                return msg  + ".\nFailed lines:\n" + failList;
+            }
         }
         
         // Code should never get here. If it does, return a warning message.
         return "WARNING: Validation for this list is not supported.";
     }
   });
-});
+//});
