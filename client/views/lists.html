@@ -42,12 +42,14 @@
             <tr class="iTR"><th class="colHeaders">List Type</th><td class="colVals">
                     <select id="ListTypeSel" title="List Type" class="scopeSelector">
                         <option disabled selected value="">Select List Type</option>
-                        <option class="scopeOpt" title="Malware Black List"  value="BL"    >Malware Black List</option>
-                        <option class="scopeOpt" title="Malware White List"  value="WL"    >Malware White List</option>
-                        <option class="scopeOpt" title="Device Black List"  value="DBL"    >Device Black List</option>
-                        <option class="scopeOpt" title="Device White List"  value="DWL"    >Device White List</option>
-                        <option class="scopeOpt" title="Device Manufacturer"  value="DM"   >Device Manufacturer</option>
-                         <option class="scopeOpt" title="SIEM Config"  value="CONF">SIEM Config</option>
+                        <option class="scopeOpt" title="Malware Black List"     value="BL"   >Malware Black List</option>
+                        <option class="scopeOpt" title="Malware White List"     value="WL"   >Malware White List</option>
+                        <option class="scopeOpt" title="Device Black List"      value="DBL"  >Device Black List</option>
+                        <option class="scopeOpt" title="Device White List"      value="DWL"  >Device White List</option>
+                        <option class="scopeOpt" title="Device Manufacturer"    value="DM"   >Device Manufacturer</option>
+                        <option class="scopeOpt" title="SIEM Config"            value="CONF" >SIEM Config</option>
+                        <option class="scopeOpt" title="Plain Text (Gen. Purpose)" value="TEXT" >Plain Text</option>
+                        <option class="scopeOpt" title="HBase Reference Data"   value="HBRD" >HBase Ref. Data</option>
                     </select></td></tr>            
                         
             <tr class="iTR"><th class="colHeaders">Entity Type</th><td class="colVals">
@@ -60,6 +62,8 @@
                         <option class="scopeOpt" title="Account" value="account"   >Account Name</option>
                         <option class="scopeOpt" title="Catchall Config: GROUP_NAME,SHORT_NAME,HOST_ALIAS1,HOST_ALIAS2..." value="catchall">Catchall Config (CSV)</option>
                         <option class="scopeOpt" title="Event Forwarding Config: DOMAIN,CONFIG_TYPE,SOURCE_HOST,FILE_PATH" value="eventfwd">Event Forwarding Config (CSV)</option>
+                        <option class="scopeOpt" title="Plain Text (for testing)" value="text">Plain Text</option>
+                        <option class="scopeOpt" title="Base64-encoded JSON objects" value="jsonb64">JSON/Base64 Data</option>
                     </select></td></tr></table>
     </details>
 

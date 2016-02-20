@@ -1,8 +1,13 @@
 function deployCall(){
     var listName = $("#ListName").val();
-    console.log("Calling deploy(", listName, ") on server"); 
+    console.log("Sending deploy command for list", listName); 
     Meteor.call('deploy', listName, function (error, result) {
-    if (error)
-      console.log("ERROR: ", error);
+        if (error){
+          alert("ERROR: ", error.toString());
+        }
+        else{
+            console.log("Result:", result);        
+            alert(result);
+        }
     });
 }

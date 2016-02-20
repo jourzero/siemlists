@@ -17,8 +17,7 @@ Meteor.startup(function () {
 
         // If the list exists, get the data
         if ((l === undefined) || (l._id <= 0)){
-            console.log("No data found for list " + listName);
-            return;
+            return "No data found for list " + listName;
         }        
 
         // Get values from record
@@ -69,21 +68,24 @@ Meteor.startup(function () {
                         continue;
                     }
                     else
-                        console.log("Creating mapping with TypeA =", typeA, "and TypeB =", typeB, "for entity", manuf, "with MAC", mac);                    
+                        console.log("SIMULATION: Creating mapping with TypeA =", typeA, "and TypeB =", typeB, "for entity", manuf, "with MAC", mac);                    
                 }
                 // Use Validator and deploy if valid
                 else{
                     if (valFunc(list[i]))
-                        console.log("Creating mapping with TypeA =", typeA, "and TypeB =", typeB, "for entity", list[i]);
+                        console.log("SIMULATION: Creating mapping with TypeA =", typeA, "and TypeB =", typeB, "for entity", list[i]);
                     else{
                         console.log("Invalid value for entity",list[i], "of type", entType);
                         continue;
                     }
                 }
             }
+            return "Deployment complete (SIMULATION ONLY).";
         }
-        console.log("Deployment complete.");
-
+        else{
+            return "WARNING: Deployment for this list type or entity type is not supported.";
+        }
+        return "Deployment for this list/entity type is not supported."
     }
   });
 });

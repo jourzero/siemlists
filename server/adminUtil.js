@@ -1,4 +1,6 @@
 Meteor.startup(function () {
+    createUser('peter', 'Peter Smith', 'sm1tten3d?', true);
+    createUser('sue', 'Sue Helen', 'sus4ny0uth3r3?', false);
     createUser('admin','Administrator', 'ch@ng3Th1sN0w0k?', true);
     createUser('john', 'John Doe', String(Math.random()*100000000000000000), true);
     createUser('joe', 'Joe Don', String(Math.random()*100000000000000000), false);

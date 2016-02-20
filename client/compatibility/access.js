@@ -13,9 +13,11 @@ function getRole(user){
         return ROLE_SOLARCH;
     if (user === 'john')
         return ROLE_SOLARCH;
+    if (user === 'peter')
+        return ROLE_SOLARCH;
     if (user === 'joe')
         return ROLE_SECANALYST;
-    if (user === 'paqman')
+    if (user === 'sue')
         return ROLE_SECANALYST;
     return ROLE_UNASSIGNED;
 }
