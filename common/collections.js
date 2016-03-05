@@ -1,2 +1,2 @@
 // Open Mongo collections
-listsColl    = new Mongo.Collection("siemlists");
+listsColl    = new Meteor.Collection("siemlists");

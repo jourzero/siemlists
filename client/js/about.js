@@ -7,7 +7,6 @@ username: function () {
         return "";
   },
   role: function () {
-        var username = Meteor.user().username;
-        return getRole(username);
+        return Session.get("myRole");
   },
 })

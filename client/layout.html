@@ -1,18 +1,18 @@
 <template name="layout">
     {{> loginButtons}}
     {{#if currentUser}}
-        {{> spacing}}<a href="/">Home</a>
-        {{> spacing}}<a href="/about">About</a>
-        {{> spacing}}{{>adminTmpl}}
+        {{> spacing}}<a href="/"       title="Manage Custom SIEM List">List Manager</a>
+        {{> spacing}}<a href="/search" title="Custom SIEM Search"     >Search</a>
+        {{> spacing}}<a href="/about"  title="Get Info About App"     >About</a>
         <!--
+        {{> spacing}}{{>adminTmpl}}
         {{> spacing}}<small>{{userText}}</small>
         -->
+        {{> spacing}}{{>roleTmpl}}
         {{> yield}}
     {{/if}}
     <hr />
-    <!--
-    <p>Copyright &copy; github.com/jourzero 2016. </p>
-    -->
+    <p>Copyright &copy; jourzero 2016. </p>
 </template>
 
 <template name="spacing">
@@ -21,4 +21,8 @@
 
 <template name="adminTmpl">
     {{{adminLink}}}
+</template>
+
+<template name="roleTmpl">
+    <small>[My Role: {{myRole}}]</small>
 </template>

@@ -25,6 +25,7 @@ function updateUIFromListName() {
 
     // Update UI values
     $("#ListPurpose").val(l.purpose);
+    $("#ListPurpose").attr("title", l.purpose);
     $("#SrcTypeSel").val(l.srcType);
     if (l.uri !== undefined){
         $("#Uri").val(l.uri);

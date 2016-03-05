@@ -37,38 +37,19 @@ function saveListDataFromUI() {
 
 // Rename the list
 function renameListFromUI(prevListName, newListName) {
-    
-    if ((prevListName === undefined) || (prevListName === "")){
-        console.log("Skipping rename, previous name is empty");
-        return;
-    }        
-    if ((newListName === undefined)  || (newListName === "")){
-        console.log("Skipping rename, new name is empty");
-        return;
-    }        
-    
-    var vals = {}, critPrev = {}, critNew = {}; mod={};
-    critPrev.name  = prevListName;
-    critNew.name   = newListName;
-    vals.name      = newListName;
-    mod["$set"] = vals;
-    rec1 = listsColl.findOne(critPrev);
-    rec2 = listsColl.findOne(critNew);
 
-    // Skip if the list record to be renamed doesn't exist
-    if ((rec1 === undefined) || (rec1._id <= 0)){
-        console.log("Previous list not found: " + prevListName);
-        return;
-    }
-    
-    // Skip if there's already a record with the new name
-    if (rec2 !== undefined){
-        console.log("ERROR: The list " + prevListName + " cannot be renamed because " + newListName + " already exists.");
-        return;
-    }
-    
-    // Rename the list
-    console.log("Renaming list from " + prevListName + " to " + newListName);
-    updId = listsColl.update(rec1._id, mod);
-    Session.set("listName", newListName);
+    Meteor.call('renameList', prevListName, newListName, function (error, result) {
+        if (error){
+            console.log("ERROR: ", error.toString());
+            Bert.alert(error.toString, 'danger', 'growl-top-right' );
+        }
+        else{
+            // Print result to console and popup the summary to UI (1st line)
+            console.log("Result:", result);
+            if (result.startsWith("SUCCESS")){
+                Bert.alert(result, 'success', 'growl-top-right' ); 
+                Session.set("listName", newListName);
+            }
+        }
+    });
 }

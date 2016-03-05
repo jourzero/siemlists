@@ -57,6 +57,7 @@ input {
     color: black;
     border: 2px;
     vertical-align: middle;
+    width: 100%;
 }
 
 .listIn{
